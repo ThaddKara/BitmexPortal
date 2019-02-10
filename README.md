@@ -7,7 +7,7 @@ Current:
 Soon:
   - ExecuteOrder(Contract, Quantity, Price) place order
   
-Eventually
+Eventually:
   - Toggle Market Making on given contract
   - Build async compatable C# API wrapper
   - Impliment wrapper somewhere (?)
