@@ -40,7 +40,7 @@ namespace sp_bmexportal.Controllers
 		[HttpPost]
 		public IActionResult ExecuteOrder([FromBody]PositionRequest positionRequest)
 		{
-			var result = itemService.GetPosition(positionRequest);
+			var result = itemService.SendOrderRequest(positionRequest);
 			return Ok(result);
 		}
     }

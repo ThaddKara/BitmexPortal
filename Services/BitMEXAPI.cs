@@ -170,13 +170,13 @@ namespace sp_bmexportal.Services
             return Query("GET", "/order", param, true);
         }
 
-        public string PostOrders()
+        public string PostOrder(string symbol, string side, int orderQty, string orderType)
         {
             var param = new Dictionary<string, string>();
-            param["symbol"] = "XBTUSD";
-            param["side"] = "Buy";
-            param["orderQty"] = "1";
-            param["ordType"] = "Market";
+            param["symbol"] = symbol;
+            param["side"] = side;
+            param["orderQty"] = orderQty;
+            param["ordType"] = orderType;
             return Query("POST", "/order", param, true);
         }
 
