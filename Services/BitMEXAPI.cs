@@ -156,7 +156,7 @@ namespace sp_bmexportal.Services
         //    return JsonSerializer.DeserializeFromString<List<OrderBookItem>>(res);
         //}
 
-        public string GetOrders()
+        public string GetOrders(string symbol, string columns, string count, string )
         {
             var param = new Dictionary<string, string>();
             param["symbol"] = "XBTUSD";

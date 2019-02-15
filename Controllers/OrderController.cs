@@ -7,7 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace sp_bmexportal.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("v1/Order")]
     [ApiController]
     public class DefaultController : ControllerBase
     {

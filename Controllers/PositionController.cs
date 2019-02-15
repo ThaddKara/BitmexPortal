@@ -9,11 +9,12 @@ using sp_bmexportal.Models;
 
 namespace sp_bmexportal.Controllers
 {
-	[Route("v1/Item")]
+	[Route("v1/Position")]
 	[ApiController]
 	public class ItemController : ControllerBase
 	{
-		private readonly IItemService itemService;
+        private const string V = "v1/Position";
+        private readonly IItemService itemService;
 
 		public ItemController(IItemService _itemService)
 		{
@@ -26,7 +27,7 @@ namespace sp_bmexportal.Controllers
 		/// <param name="positionRequest"></param>
 		/// <returns></returns>
 		[HttpGet]
-		public IActionResult GetItems([FromBody]PositionRequest positionRequest)
+		public IActionResult GetPosition([FromBody]PositionRequest positionRequest)
 		{
 			var result = itemService.GetPosition(positionRequest);
 			return Ok(result);
