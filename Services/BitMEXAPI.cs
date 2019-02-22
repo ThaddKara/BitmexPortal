@@ -27,8 +27,8 @@ namespace sp_bmexportal.Services
     public class BitMEXApi
     {
         private const string domain = "https://www.bitmex.com";
-		private string apiKey;
-		private string apiSecret;
+        private string apiKey;
+        private string apiSecret;
         private int rateLimit;
 
         public BitMEXApi(string bitmexKey = "", string bitmexSecret = "", int rateLimit = 5000)
@@ -133,19 +133,28 @@ namespace sp_bmexportal.Services
                 }
             }
         }
+        
+        public string GetChatMessages(int messages)
+        {
+            var param = new Dictionary<string, string>();
+            param["count"] = messages;
+            param["channelID"] = "1";
+            string res = Query("GET", "/chat", param, true);
+            return res;
+        }
 
-		public string GetPosition(string contract)
-		{
-			var param = new Dictionary<string, string>();
-			param["filter"] = "{\"symbol\":\"" + contract + "\"}";
-			string res = Query("GET", "/position", param, true);
-			return res;
-			//return JsonConvert.DeserializeObject<BitmexBigOrders.Models.PositionItemList>(res);
+        public string GetPosition(string contract)
+        {
+            var param = new Dictionary<string, string>();
+            param["filter"] = "{\"symbol\":\"" + contract + "\"}";
+            string res = Query("GET", "/position", param, true);
+            return res;
+            //return JsonConvert.DeserializeObject<BitmexBigOrders.Models.PositionItemList>(res);
 
-			
-			//return JsonConvert.DeserializeObject<sp_bmexportal.Models.PositionItem>(res);
-			//JsonSerializer j = new JsonSerializer();
-		}
+
+            //return JsonConvert.DeserializeObject<sp_bmexportal.Models.PositionItem>(res);
+            //JsonSerializer j = new JsonSerializer();
+        }
 
         //public List<OrderBookItem> GetOrderBook(string symbol, int depth)
         //{
@@ -156,7 +165,10 @@ namespace sp_bmexportal.Services
         //    return JsonSerializer.DeserializeFromString<List<OrderBookItem>>(res);
         //}
 
-        public string GetOrders(string symbol, string columns, string count, string )
+        public string GetOrders(string symbol, string columns,
+            string count, string start,
+            string reverse, string start,
+            string end)
         {
             var param = new Dictionary<string, string>();
             param["symbol"] = "XBTUSD";
@@ -182,10 +194,10 @@ namespace sp_bmexportal.Services
 
         //public string DeleteOrders()
         //{
-            ///var param = new Dictionary<string, string>();
-            ///param["orderID"] = "de709f12-2f24-9a36-b047-ab0ff090f0bb";
-            ///param["text"] = "cancel order by ID";
-            ///return Query("DELETE", "/order", param, true, true);
+        ///var param = new Dictionary<string, string>();
+        ///param["orderID"] = "de709f12-2f24-9a36-b047-ab0ff090f0bb";
+        ///param["text"] = "cancel order by ID";
+        ///return Query("DELETE", "/order", param, true, true);
         //}
 
         private byte[] Hmacsha256(byte[] keyByte, byte[] messageBytes)
