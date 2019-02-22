@@ -9,7 +9,12 @@ namespace sp_bmexportal.Services
 
         string GetMessages(sp_bmexportal.Models.ChatReader chatReader)
         {
-            bitMEXApi.GetChatMessages(chatReader.cha)
+            return bitMEXApi.GetChatMessages(chatReader.Messages);
+        }
+
+        string SendMessage(sp_bmexportal.Models.Chatter chatter)
+        {
+            return bitMEXApi.SendMessage(chatter);
         }
     }
 }

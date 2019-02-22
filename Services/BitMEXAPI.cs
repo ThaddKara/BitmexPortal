@@ -133,6 +133,14 @@ namespace sp_bmexportal.Services
                 }
             }
         }
+
+        string SendMessage(sp_bmexportal.Models.Chatter chatter)
+        {
+            var param = new Dictionary<string, string>();
+            param["Message"] = chatter.Message;
+            param["channelID"] = chatter.ChannelId;
+            return Query("POST", "/chat", param, true);
+        }
         
         public string GetChatMessages(int messages)
         {
